@@ -6,3 +6,4 @@ coverage
 build/
 yarn-error.log
 logs/
+src/services/firebase/*.json
