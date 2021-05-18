@@ -14,6 +14,6 @@ COPY . .
 ENV PORT=5000
 
 # Modify the Exposed PORT no.
-EXPOSE 8080
+EXPOSE 5000
 
 CMD ["yarn", "start"]
