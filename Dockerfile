@@ -11,9 +11,9 @@ RUN yarn install
 COPY . .
 
 # Modify the ENV PORT no.
-# ENV PORT=3000
+ENV PORT=5000
 
 # Modify the Exposed PORT no.
-# EXPOSE 8080
+EXPOSE 8080
 
 CMD ["yarn", "start"]
