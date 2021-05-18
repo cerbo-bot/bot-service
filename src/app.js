@@ -1,6 +1,7 @@
 import express from 'express';
 import cookieParser from 'cookie-parser';
 import morganMiddleware from './middleware/morgan';
+import { firebaseAuthMiddleware } from './middleware';
 import logger from './services/logger';
 import indexRouter from './routes/index';
 
@@ -9,6 +10,7 @@ app.use(morganMiddleware);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+app.use(firebaseAuthMiddleware);
 app.use('/', indexRouter);
 
 app.use((err, req, res, next) => {

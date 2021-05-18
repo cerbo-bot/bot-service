@@ -1,4 +1,4 @@
 import dotenv from 'dotenv';
 
 dotenv.config();
-export const { ENV, PORT } = process.env;
+export const { ENV, PORT, FIREBASE_DATABASE_URL } = process.env;
