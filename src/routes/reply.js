@@ -3,6 +3,6 @@ import { sendReply } from '../controllers';
 
 const replyRouter = express.Router();
 
-replyRouter.get('/', sendReply);
+replyRouter.post('/', sendReply);
 
 export default replyRouter;
