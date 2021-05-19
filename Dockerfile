@@ -16,4 +16,4 @@ ENV PORT=5000
 # Modify the Exposed PORT no.
 EXPOSE 5000
 
-CMD ["yarn", "startdev"]
+CMD ["yarn", "start"]
