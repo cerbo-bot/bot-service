@@ -6,7 +6,7 @@ const db = firebase.firestore();
 
 export const dbWrite = async (text, roomId = 'cheWpV697Re7ahQ1buoZ') => {
   const docRef = await db.collection(`rooms/${roomId}/messages`).add({
-    authorId: 're1HNZgn07PYrL1nv06GGCJGAz13',
+    authorId: 'ZkuedrNkNbtVbAE87sNC',
     metadata: null,
     mimeType: null,
     size: null,
