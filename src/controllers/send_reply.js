@@ -24,7 +24,7 @@ export const sendReply = async (req, res) => {
       const messageBody = pubSubMessage.data
         ? decodeBase64Json(pubSubMessage.data)
         : null;
-      logger.info(messageBody);
+
       if (!messageBody || !messageBody.uid) {
         const msg = 'no Pub/Sub message received';
         logger.error(`error: ${msg}`);
