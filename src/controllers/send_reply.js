@@ -15,6 +15,7 @@ export const sendReply = async (req, res) => {
       if (!err) reply = advice;
     }
     if (reply) dbWrite(reply, roomId);
+    if (reply) logger.info(`reply:${reply}`); // DELETE
     else throw new Error('No reply to send.');
     res.status(200).json({ success: true, message: 'message sent.' });
   } catch (err) {
