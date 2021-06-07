@@ -27,8 +27,8 @@ export const intentDetector = async (req, res, next) => {
       req.body.messageBody.reply = intentResponse.queryResult.fulfillmentText;
       throw new Error('Intent not recognised.');
     }
-    next();
   } catch (error) {
     logger.error(`${error}`);
   }
+  next();
 };
