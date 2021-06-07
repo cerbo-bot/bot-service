@@ -1014,6 +1014,14 @@
     retry-request "^4.1.1"
     teeny-request "^7.0.0"
 
+"@google-cloud/dialogflow@^3.5.0":
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/@google-cloud/dialogflow/-/dialogflow-3.5.0.tgz#189c280dffa3bddb3e9bc6eec8b7e0b3270b2868"
+  integrity sha512-uzcvwzgzGsMiK9eGyDdmMJO/y1xooa5zpbtomXQL+nyAHy78Duc7Ns7e70byK/ItxucJijfgJJs5Lbcq9XElIQ==
+  dependencies:
+    google-gax "^2.9.2"
+    protobufjs "^6.8.9"
+
 "@google-cloud/firestore@^4.5.0":
   version "4.11.1"
   resolved "https://registry.yarnpkg.com/@google-cloud/firestore/-/firestore-4.11.1.tgz#03e12e5721383165efc09e208143378f3ea681d6"
@@ -3157,6 +3165,24 @@ google-gax@^2.12.0:
     protobufjs "^6.10.2"
     retry-request "^4.0.0"
 
+google-gax@^2.9.2:
+  version "2.14.1"
+  resolved "https://registry.yarnpkg.com/google-gax/-/google-gax-2.14.1.tgz#74885c5d9f01db412917fc49bbf20c4884828d36"
+  integrity sha512-I5RDEN7MEptrCxeHX3ht7nKFGfyjgYX4hQKI9eVMBohMzVbFSwWUndo0CcKXu8es7NhB4gt2XYLm1AHkXhtHpA==
+  dependencies:
+    "@grpc/grpc-js" "~1.3.0"
+    "@grpc/proto-loader" "^0.6.1"
+    "@types/long" "^4.0.0"
+    abort-controller "^3.0.0"
+    duplexify "^4.0.0"
+    fast-text-encoding "^1.0.3"
+    google-auth-library "^7.0.2"
+    is-stream-ended "^0.1.4"
+    node-fetch "^2.6.1"
+    object-hash "^2.1.1"
+    protobufjs "^6.10.2"
+    retry-request "^4.0.0"
+
 google-p12-pem@^3.0.3:
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/google-p12-pem/-/google-p12-pem-3.0.3.tgz#673ac3a75d3903a87f05878f3c75e06fc151669e"
@@ -4882,7 +4908,7 @@ progress@^2.0.0:
   resolved "https://registry.yarnpkg.com/progress/-/progress-2.0.3.tgz#7e8cf8d8f5b8f239c1bc68beb4eb78567d572ef8"
   integrity sha512-7PiHtLll5LdnKIMw100I+8xJXR5gW2QwWYkT6iJva0bXitZKa/XMrSbdmg3r2Xnaidz9Qumd0VPaMrZlF9V9sA==
 
-protobufjs@^6.10.0, protobufjs@^6.10.2, protobufjs@^6.8.6:
+protobufjs@^6.10.0, protobufjs@^6.10.2, protobufjs@^6.8.6, protobufjs@^6.8.9:
   version "6.11.2"
   resolved "https://registry.yarnpkg.com/protobufjs/-/protobufjs-6.11.2.tgz#de39fabd4ed32beaa08e9bb1e30d08544c1edf8b"
   integrity sha512-4BQJoPooKJl2G9j3XftkIXjoC9C0Av2NOrWmbLWT1vH32GcSUHjM0Arra6UfTsVyfMAuFzaLucXn1sadxJydAw==
