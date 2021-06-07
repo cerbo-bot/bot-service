@@ -4,7 +4,7 @@ import replyRouter from './reply';
 
 const indexRouter = express.Router();
 
-indexRouter.use('/reply', replyRouter);
 indexRouter.get('/', indexPage);
+indexRouter.use('/reply', replyRouter);
 
 export default indexRouter;
