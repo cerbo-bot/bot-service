@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import { adviceService } from '../services/advice_service';
 import { newsService } from '../services/news_service';
 import { dbWrite, getRoomId } from '../services/firebase/db_operations';
@@ -14,14 +15,21 @@ export const sendReply = async (req, res) => {
       const advice = await adviceService();
       const { err } = advice;
       if (!err) reply = advice;
+      if (reply) await dbWrite(reply, roomId);
+      else throw new Error('No reply to send.');
     } else if (intent === 'news') {
-      const newsLinks = await newsService('bitcoin');
-      const { err } = newsLinks;
-      if (!err) reply = newsLinks;
+      const newsLinks = await newsService('github', uid);
+      let i = 0;
+      _.forEach(newsLinks, async (newsItem) => {
+        i += 1;
+        if (i > 3) return false;
+        const textToSend = `${newsItem.title} \n ${newsItem.url}`;
+        logger.info(newsItem.textToSend);
+        reply = textToSend;
+        if (reply) await dbWrite(reply, roomId);
+        else throw new Error('No reply to send.');
+      });
     }
-    // if (reply) dbWrite(reply, roomId);
-    if (reply) logger.info(`reply:${reply}`); // DELETE
-    else throw new Error('No reply to send.');
     res.status(200).json({ success: true, message: 'message sent.' });
   } catch (err) {
     logger.error(`${err}`);
