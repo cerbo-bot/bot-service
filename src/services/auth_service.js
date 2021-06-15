@@ -1,7 +1,8 @@
 import axios from 'axios';
 import firebase from './firebase/firebase_admin_config';
+import { FIREBASE_API_KEY } from '../settings';
 
-const url = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithCustomToken?key=AIzaSyAymaua61gPPWD4Pvc5P8FLr5s6f0GIqdA';
+const url = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithCustomToken?key=${FIREBASE_API_KEY}`;
 
 export const getOAuthToken = async (uid) => {
   try {
