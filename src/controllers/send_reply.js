@@ -1,4 +1,5 @@
 import { adviceService } from '../services/advice_service';
+import { newsService } from '../services/news_service';
 import { dbWrite, getRoomId } from '../services/firebase/db_operations';
 import logger from '../services/logger';
 
@@ -13,8 +14,12 @@ export const sendReply = async (req, res) => {
       const advice = await adviceService();
       const { err } = advice;
       if (!err) reply = advice;
+    } else if (intent === 'news') {
+      const newsLinks = await newsService('bitcoin');
+      const { err } = newsLinks;
+      if (!err) reply = newsLinks;
     }
-    if (reply) dbWrite(reply, roomId);
+    // if (reply) dbWrite(reply, roomId);
     if (reply) logger.info(`reply:${reply}`); // DELETE
     else throw new Error('No reply to send.');
     res.status(200).json({ success: true, message: 'message sent.' });
