@@ -22,9 +22,10 @@ export const queryValidator = (req, res, next) => {
     return;
   }
   const pubSubMessage = req.body.message;
-  const messageBody = pubSubMessage.data
-    ? decodeBase64Json(pubSubMessage.data)
-    : null;
+  const messageBody = pubSubMessage.data;
+  // const messageBody = pubSubMessage.data
+  //   ? decodeBase64Json(pubSubMessage.data)
+  //   : null;
   if (!messageBody || !messageBody.uid) {
     const msg = 'no Pub/Sub message received';
     logger.error(`error: ${msg}`);
