@@ -6,7 +6,7 @@ import logger from '../services/logger';
 
 export const sendReply = async (req, res) => {
   try {
-    const { uid, intent } = req.body.messageBody;
+    const { uid, intent, topic } = req.body.messageBody;
     let { reply } = req.body.messageBody;
     const roomId = await getRoomId(uid);
     logger.debug(`Sending message to ${roomId}`);
@@ -18,13 +18,12 @@ export const sendReply = async (req, res) => {
       if (reply) await dbWrite(reply, roomId);
       else throw new Error('No reply to send.');
     } else if (intent === 'news') {
-      const newsLinks = await newsService('github', uid);
-      let i = 0;
+      const allNewsLinks = await newsService(topic || '', uid);
+      logger.info(`looking for ${topic || ''}`);
+      const newsLinks = _.slice(allNewsLinks, 0, 3);
       _.forEach(newsLinks, async (newsItem) => {
-        i += 1;
-        if (i > 3) return false;
         const textToSend = `${newsItem.title} \n ${newsItem.url}`;
-        logger.info(newsItem.textToSend);
+        logger.info(textToSend);
         reply = textToSend;
         if (reply) await dbWrite(reply, roomId);
         else throw new Error('No reply to send.');
