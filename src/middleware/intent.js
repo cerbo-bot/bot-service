@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import logger from '../services/logger';
 import { detectIntent } from '../services/dialog-flow';
 
@@ -17,14 +18,15 @@ export const intentDetector = async (req, res, next) => {
       context,
       languageCode
     );
-    logger.info(intentResponse.queryResult);
-    const intent = intentResponse.queryResult.intent.displayName;
+    const topic = _.get(intentResponse, 'queryResult.parameters.fields.news_topic.stringValue', '');
+    req.body.messageBody.topic = topic;
+    const intent = _.get(intentResponse, 'queryResult.intent.displayName');
+    req.body.messageBody.reply = _.get(intentResponse, 'queryResult.fulfillmentText', '');
     if (intent) {
       req.body.messageBody.intent = intent;
-      req.body.messageBody.reply = intentResponse.queryResult.fulfillmentText;
+      // entities identification
     } else {
       req.body.messageBody.intent = 'default';
-      req.body.messageBody.reply = intentResponse.queryResult.fulfillmentText;
       throw new Error('Intent not recognised.');
     }
   } catch (error) {
