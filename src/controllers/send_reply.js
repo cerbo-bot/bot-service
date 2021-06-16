@@ -24,12 +24,14 @@ export const sendReply = async (req, res) => {
       _.forEach(newsLinks, async (newsItem) => {
         const textToSend = `${newsItem.title} \n ${newsItem.url}`;
         logger.info(textToSend);
+
         reply = textToSend;
         if (reply) await dbWrite(reply, roomId);
         else throw new Error('No reply to send.');
       });
     } else if (reply) await dbWrite(reply, roomId);
     else throw new Error('No reply to send.');
+
     res.status(200).json({ success: true, message: 'message sent.' });
   } catch (err) {
     logger.error(`${err}`);
