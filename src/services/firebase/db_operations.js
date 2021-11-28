@@ -12,6 +12,8 @@ export const dbWrite = async (text, roomId = 'cheWpV697Re7ahQ1buoZ') => {
     size: null,
     status: null,
     timestamp: admin.firestore.Timestamp.now(),
+    createdAt: admin.firestore.Timestamp.now(),
+    updatedAt: admin.firestore.Timestamp.now(),
     type: 'text',
     text,
   });
